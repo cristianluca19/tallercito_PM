@@ -1,20 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './Card.css'
 
-
-export default function Card() {
-
-    return (
-
-
-        <Link to='/details'>
-            <div className='container'>
-    <h3>{}</h3>
-    <img hfre={'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Harry_Potter_wordmark.svg/1200px-Harry_Potter_wordmark.svg.png'} alt=''/>
-            </div>
-
+export default function Card({character}) {
+    return character && (
+    <div className="col-3 m-3 card p-3 text-center shadow-lg bg-dark card-character" key={character.id}>
+        <Link to={`/detail/${character.id}`}>
+            <h3 className="card-title card-character">{character.name}</h3>    
+            <img src={character.image} alt='Imagen de personaje' className="img-fluid rounded-circle p-3"/>
+            <strong>{character.status}</strong>
         </Link>
-
-
-    )
+    </div>)
 }

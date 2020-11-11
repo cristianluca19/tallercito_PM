@@ -1,0 +1,21 @@
+.card-character{
+    color: black;
+    text-decoration: none;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+}
+
+.card-character-title{
+    color: white;
+}
+
+.card-character a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.card-character:hover{
+    transform: scale(1.05);
+    text-decoration: none;
+}
