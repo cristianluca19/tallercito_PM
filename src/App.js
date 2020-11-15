@@ -3,6 +3,7 @@ import { Route} from "react-router-dom";
 import Nav from './components/Nav'
 import Container from './components/Container'
 import Details from './components/Details'
+import Taller from './components/Taller'
 import './App.css';
 import axios from 'axios';
 
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <div >
      <Route path='/' render={()=> <Nav/>}/>
+     <Route exact path='/taller' render={()=> <Taller/>}/>
      <Route exact path='/' render={()=> <Container characters={characters}/>}/>
      <Route exact path='/detail/:id' render={({ match })=> <Details character={filtro(match.params.id)}/>}/>
     </div>
