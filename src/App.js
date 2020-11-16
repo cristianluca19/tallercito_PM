@@ -6,23 +6,26 @@ import Details from './components/Details'
 import Taller from './components/Taller'
 import './App.css';
 import axios from 'axios';
-
+import {useDispatch, useSelector} from 'react-redux'
+import * as action from './redux/action'
 
 
 export default function App() {
 
-  const [characters, setCharacters] = useState([]);
-
+  const dispatch = useDispatch()
+  const characters = useSelector(store=> store.character)
+  
   const fetchRick = async () => {
     await axios.get('https://rickandmortyapi.com/api/character')
     .then(req => {
-      setCharacters([...req.data.results])
+      dispatch(action.addPersonajes(req.data.results))
     })
   }
-
+  
+ 
   useEffect(() => {
     fetchRick();
-  },[setCharacters])
+  },[])
 
   const filtro = id => {
     const character = characters.filter(el => el.id == id)
@@ -33,7 +36,7 @@ export default function App() {
     <div >
      <Route path='/' render={()=> <Nav/>}/>
      <Route exact path='/taller' render={()=> <Taller/>}/>
-     <Route exact path='/' render={()=> <Container characters={characters}/>}/>
+     <Route exact path='/' render={()=> <Container/>}/>
      <Route exact path='/detail/:id' render={({ match })=> <Details character={filtro(match.params.id)}/>}/>
     </div>
   );
